@@ -1,15 +1,15 @@
 # install-aws-cli-action
 
-[![test](https://github.com/unfor19/install-aws-cli-action/actions/workflows/test.yaml/badge.svg)](https://github.com/unfor19/install-aws-cli-action/actions?query=workflow%3Atest)
-[![test-action](https://github.com/unfor19/install-aws-cli-action-test/workflows/test-action/badge.svg)](https://github.com/unfor19/install-aws-cli-action-test/actions?query=workflow%3Atest-action)
+[![test](https://github.com/eleos-health/install-aws-cli-action/actions/workflows/test.yaml/badge.svg)](https://github.com/eleos-health/install-aws-cli-action/actions?query=workflow%3Atest)
+[![test-action](https://github.com/eleos-health/install-aws-cli-action-test/workflows/test-action/badge.svg)](https://github.com/eleos-health/install-aws-cli-action-test/actions?query=workflow%3Atest-action)
 
 Install/Setup AWS CLI on a GitHub Actions Linux host.
 
 After this action, every step is capable of running `aws` CLI, and it's up to you to set AWS credentials in the subsequent steps.
 
-Tested in [unfor19/install-aws-cli-action-test](https://github.com/unfor19/install-aws-cli-action-test/actions?query=workflow%3Atest-action)
+Tested in [eleos-health/install-aws-cli-action-test](https://github.com/eleos-health/install-aws-cli-action-test/actions?query=workflow%3Atest-action)
 
-**TIP**: It's possible to use the [entrypoint.sh](https://github.com/unfor19/install-aws-cli-action/blob/master/entrypoint.sh) script as a "bootstrap script to install/setup aws cli on Linux", regardless of GitHub Actions; see [Other Options](https://github.com/unfor19/install-aws-cli-action#other-options) for more details.
+**TIP**: It's possible to use the [entrypoint.sh](https://github.com/eleos-health/install-aws-cli-action/blob/master/entrypoint.sh) script as a "bootstrap script to install/setup aws cli on Linux", regardless of GitHub Actions; see [Other Options](https://github.com/eleos-health/install-aws-cli-action#other-options) for more details.
 
 ## Usage
 
@@ -28,7 +28,7 @@ Add one of the following steps to a job in your workflow.
 
 ```yaml
 - id: install-aws-cli
-  uses: unfor19/install-aws-cli-action@v1
+  uses: eleos-health/install-aws-cli-action@v1
   with:
     version: 2                         # default
     verbose: false                     # default
@@ -39,7 +39,7 @@ Add one of the following steps to a job in your workflow.
 
 ```yaml
 - id: install-aws-cli
-  uses: unfor19/install-aws-cli-action@v1
+  uses: eleos-health/install-aws-cli-action@v1
   with:
     version: 2                         # default
     verbose: false                     # default
@@ -47,12 +47,12 @@ Add one of the following steps to a job in your workflow.
     bindir: "/usr/local/bin"           # default
     installrootdir: "/usr/local"       # default
     rootdir: ""                        # defaults to "PWD"
-    workdir: ""                        # defaults to "PWD/unfor19-awscli"
+    workdir: ""                        # defaults to "PWD/eleos-health-awscli"
 ```
 
 ### Test with GitHub Matrix
 
-See [unfor19/install-aws-cli-action-test/blob/master/.github/workflows/test-action.yml](https://github.com/unfor19/install-aws-cli-action-test/blob/master/.github/workflows/test-action.yml)
+See [eleos-health/install-aws-cli-action-test/blob/master/.github/workflows/test-action.yml](https://github.com/eleos-health/install-aws-cli-action-test/blob/master/.github/workflows/test-action.yml)
 
 ```yaml
 name: test-action
@@ -79,7 +79,7 @@ jobs:
     steps:
       - name: Test ${{ matrix.TEST_NAME }}
         id: install-aws-cli
-        uses: unfor19/install-aws-cli-action@master
+        uses: eleos-health/install-aws-cli-action@master
         with:
           version: ${{ matrix.AWS_CLI_VERSION }}
       - run: aws --version
@@ -90,7 +90,7 @@ jobs:
 
 - Execute locally
   ```bash
-  curl -L -o install-aws.sh https://raw.githubusercontent.com/unfor19/install-aws-cli-action/master/entrypoint.sh && \
+  curl -L -o install-aws.sh https://raw.githubusercontent.com/eleos-health/install-aws-cli-action/master/entrypoint.sh && \
   chmod +x install-aws.sh
   ./install-aws.sh "v2" "amd64"
   rm install-aws.sh  
@@ -99,7 +99,7 @@ jobs:
   ```dockerfile
   # Install AWS CLI
   WORKDIR /tmp/
-  RUN curl -L -o install-aws.sh https://raw.githubusercontent.com/unfor19/install-aws-cli-action/master/entrypoint.sh && \
+  RUN curl -L -o install-aws.sh https://raw.githubusercontent.com/eleos-health/install-aws-cli-action/master/entrypoint.sh && \
       sudo chmod +x install-aws.sh && \
       sudo ./install-aws.sh "v2" "amd64" && \
       sudo rm install-aws.sh
@@ -131,8 +131,8 @@ jobs:
 
 ## Authors
 
-Created and maintained by [Meir Gabay](https://github.com/unfor19)
+Created and maintained by [Meir Gabay](https://github.com/eleos-health)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/unfor19/install-aws-cli-action/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/eleos-health/install-aws-cli-action/blob/master/LICENSE) file for details
